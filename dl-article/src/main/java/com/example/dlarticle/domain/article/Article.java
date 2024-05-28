@@ -43,4 +43,9 @@ public class Article {
         this.detail = detail;
         this.category = category;
     }
+
+    public void updateArticle(String title, String detail) {
+        this.title = title;
+        this.detail = detail;
+    }
 }

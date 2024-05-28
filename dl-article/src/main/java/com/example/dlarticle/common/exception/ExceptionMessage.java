@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 public enum ExceptionMessage {
 
     // Article Exception
+    ARTICLE_NOT_FOUND("Article not found"),
 
     // Comment Exception
 
