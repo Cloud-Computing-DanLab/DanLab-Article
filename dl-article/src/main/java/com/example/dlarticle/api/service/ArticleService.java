@@ -5,6 +5,7 @@ import com.example.dlarticle.api.dto.UpdateArticleRequest;
 import com.example.dlarticle.common.exception.ExceptionMessage;
 import com.example.dlarticle.common.exception.handler.ArticleException;
 import com.example.dlarticle.domain.article.Article;
+import com.example.dlarticle.domain.article.constant.ArticleCategory;
 import com.example.dlarticle.domain.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,7 @@ public class ArticleService {
         return articleRepository.findAll(pageable);
     }
 
-    public Page<Article> getArticlesByCategory(String category, Pageable pageable) {
+    public Page<Article> getArticlesByCategory(ArticleCategory category, Pageable pageable) {
         return articleRepository.findAllByCategory(category, pageable);
     }
 

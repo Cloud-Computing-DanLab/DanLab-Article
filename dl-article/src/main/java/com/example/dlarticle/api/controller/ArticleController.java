@@ -5,6 +5,7 @@ import com.example.dlarticle.api.dto.UpdateArticleRequest;
 import com.example.dlarticle.api.service.ArticleService;
 import com.example.dlarticle.common.response.JsonResult;
 import com.example.dlarticle.domain.article.Article;
+import com.example.dlarticle.domain.article.constant.ArticleCategory;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,7 @@ public class ArticleController {
     // 글 목록 조회 (전체 또는 특정 카테고리)
     @GetMapping("/")
     public JsonResult<?> getArticles(
-            @RequestParam(required = false) String category,
+            @RequestParam(required = false) ArticleCategory category,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id") String sort,
