@@ -17,7 +17,7 @@ import static com.example.dlarticle.IntegrationHelper.NON_ASCII;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings(NON_ASCII)
-class CommentIntegrationTest extends IntegrationHelper {
+class CommentServiceTest extends IntegrationHelper {
 
     @Autowired
     private CommentService commentService;

@@ -1,6 +1,7 @@
 package com.example.dlarticle.api.controller;
 
 import com.example.dlarticle.api.dto.ArticleResponse;
+import com.example.dlarticle.api.dto.CreateArticleRequest;
 import com.example.dlarticle.api.dto.UpdateArticleRequest;
 import com.example.dlarticle.api.service.ArticleService;
 import com.example.dlarticle.common.response.JsonResult;
@@ -21,6 +22,13 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ArticleController {
     private final ArticleService articleService;
+
+    // 글 작성
+    @PostMapping("/")
+    public JsonResult<?> createArticle(@Valid @RequestBody CreateArticleRequest request) {
+        articleService.createArticle(request);
+        return JsonResult.successOf("글 작성이 완료되었습니다.");
+    }
 
     // 글 목록 조회 (전체 또는 특정 카테고리)
     @GetMapping("/")

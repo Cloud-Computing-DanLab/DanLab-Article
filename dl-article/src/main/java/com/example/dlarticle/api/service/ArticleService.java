@@ -1,6 +1,7 @@
 package com.example.dlarticle.api.service;
 
 import com.example.dlarticle.api.dto.ArticleResponse;
+import com.example.dlarticle.api.dto.CreateArticleRequest;
 import com.example.dlarticle.api.dto.UpdateArticleRequest;
 import com.example.dlarticle.common.exception.ExceptionMessage;
 import com.example.dlarticle.common.exception.handler.ArticleException;
@@ -46,5 +47,17 @@ public class ArticleService {
         });
 
         article.updateArticle(request.title(), request.detail());
+    }
+
+    @Transactional
+    public void createArticle(CreateArticleRequest request) {
+        articleRepository.save(
+                Article.builder()
+                        .memberId(request.memberId())
+                        .title(request.title())
+                        .detail(request.detail())
+                        .category(request.category())
+                        .build()
+        );
     }
 }

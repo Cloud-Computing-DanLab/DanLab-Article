@@ -27,8 +27,7 @@ public class Article {
     @Column(name = "TITLE", nullable = false)
     private String title;
 
-    @Lob
-    @Column(name = "DETAIL", nullable = false)
+    @Column(name = "DETAIL", nullable = false, columnDefinition = "TEXT")
     private String detail;
 
     @Enumerated(EnumType.STRING)

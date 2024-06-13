@@ -2,6 +2,7 @@ package com.example.dlarticle.api.service;
 
 import com.example.dlarticle.IntegrationHelper;
 import com.example.dlarticle.api.dto.ArticleResponse;
+import com.example.dlarticle.api.dto.CreateArticleRequest;
 import com.example.dlarticle.api.dto.UpdateArticleRequest;
 import com.example.dlarticle.common.exception.ExceptionMessage;
 import com.example.dlarticle.common.exception.handler.ArticleException;
@@ -17,12 +18,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.example.dlarticle.IntegrationHelper.NON_ASCII;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings(NON_ASCII)
-class ArticleIntegrationTest extends IntegrationHelper {
+class ArticleServiceTest extends IntegrationHelper {
 
     @Autowired
     private ArticleService articleService;
@@ -93,6 +95,22 @@ class ArticleIntegrationTest extends IntegrationHelper {
         // when & then
         ArticleException exception = assertThrows(ArticleException.class, () -> articleService.getArticle(nonExistentArticleId));
         assertEquals(ExceptionMessage.ARTICLE_NOT_FOUND.getText(), exception.getMessage());
+    }
+
+    @Test
+    void 글_등록() {
+        // given
+        var request = new CreateArticleRequest(1L, "testTitle", "testDetail", ArticleCategory.QNA);
+
+        // when
+        articleService.createArticle(request);
+
+        // then
+        Article article = articleRepository.findByTitle("testTitle").get();
+        assertEquals(article.getCategory(), ArticleCategory.QNA);
+        assertEquals(article.getDetail(), "testDetail");
+        assertEquals(article.getMemberId(), 1L);
+
     }
 
     @Test
