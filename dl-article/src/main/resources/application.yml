@@ -8,14 +8,15 @@ spring:
     active: local
 
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://article-postgres:5432/danlab?serverTimezone=Asia/Seoul
-    username: jus
-    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.100.44.38:3306/jwt_security?serverTimezone=Asia/Seoul
+    username: root
+    password: hks13579
 
   jpa:
-    hibernate:
-      ddl-auto: update
+    properties:
+      hibernate:
+        ddl-auto: update
 
 ---
 spring.config.activate.on-profile: local
