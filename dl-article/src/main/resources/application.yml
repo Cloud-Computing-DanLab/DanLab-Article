@@ -9,14 +9,14 @@ spring:
     active: local
 
   datasource:
-    driver-class-name:
-    url: jdbc:mariadb://localhost:3306/danlab-article
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://lab-postgres:5432/danlab?serverTimezone=Asia/Seoul
     username: jus
     password: 1234
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 ---
 spring.config.activate.on-profile: local
