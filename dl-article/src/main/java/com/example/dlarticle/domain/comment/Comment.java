@@ -31,10 +31,6 @@ public class Comment {
     @Column(name = "CONTENT", nullable = false)
     private String content;
 
-    @CreationTimestamp
-    @Column(name = "CREATED_DATE_TIME", nullable = false, updatable = false)
-    private LocalDateTime createdDateTime;
-
     @Builder
     public Comment(Long memberId, Long articleId, String content) {
         this.memberId = memberId;

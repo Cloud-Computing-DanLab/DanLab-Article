@@ -10,16 +10,14 @@ public record CommentResponse(
         Long id,
         Long memberId,
         Long articleId,
-        String content,
-        LocalDateTime createdDateTime
+        String content
 ) {
     public static CommentResponse of(Comment comment) {
         return new CommentResponse(
                 comment.getId(),
                 comment.getMemberId(),
                 comment.getArticleId(),
-                comment.getContent(),
-                comment.getCreatedDateTime()
+                comment.getContent()
         );
     }
 }
